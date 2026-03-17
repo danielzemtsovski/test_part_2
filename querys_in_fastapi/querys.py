@@ -45,7 +45,7 @@ class Querys:
                 where priority_level = 99
                 group by entity_id
                 order by count desc
-                limit 3;
+                limit 3; 
                 """
         return self.performing_query(query)
     
