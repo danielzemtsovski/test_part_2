@@ -33,6 +33,14 @@ query_3 = """
 #            
 #           """
 
+query_5 = """
+            select 
+            from 
+            where ;
+          """
+
+
+
 
 query_6 = """
             with aaaa as(
@@ -41,9 +49,8 @@ query_6 = """
                         inner join damage_assessments as d
                         on a.attack_id = d.attack_id
                         where d.result != destroyed
-                        )
+                        ) 
 
-                    
           """
 
 
