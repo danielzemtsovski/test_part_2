@@ -81,7 +81,36 @@ class Querys:
     
     def query_6(self):
         log_event("INFO", f"Running query 6")
-        query = ""
+        query =  """
+            with not_destroyed as (
+                select a.entity_id, a.timestamp as attack_time 
+                from attacks as a
+                inner join damage_assessments as d 
+                on a.attack_id = d.attack_id
+                where d.result != "destroyed"
+            ), 
+            before as (
+                select n.entity_id, n.attack_time, avg(t.movement_distance_km) as avg_before
+                from not_destroyed as n
+                inner join targets as t 
+                on n.entity_id = t.entity_id
+                where t.timestamp between date_sub(n.attack_time, interval 3 hour) and n.attack_time
+                group by n.entity_id, n.attack_time
+            ),           
+            after as (
+                select n.entity_id, n.attack_time, avg(t.movement_distance_km) as avg_after
+                from not_destroyed as n
+                inner join targets as t 
+                on n.entity_id = t.entity_id
+                where t.timestamp between date_add(n.attack_time, interval 3 hour) and n.attack_time
+                group by n.entity_id, n.attack_time
+            )    
+            select b.entity_id, b.avg_before, a.avg_after, !!!!!!
+            from before as b
+            inner join after as a 
+            on b.entity_id = a.entity_id 
+            !!!!!!!!!!!
+          """
         return self.performing_query(query)
     
     def query_7(self):
