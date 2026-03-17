@@ -5,17 +5,37 @@ from logger import log_event
 router = APIRouter()
 querys = Querys()
 
-@router.get("/employees/engineering/high-salary")
-def engineering_high_salary_employees():
-    log_event("INFO", "API Request: GET /employees/engineering/high-salary")
+@router.get("/query_1")
+def query_1():
+    log_event("INFO", "get query_1")
     return querys.query_1()
 
-@router.get("/employees/by-age-and-role")
-def employees_by_age_and_role(age: int, role: str):
-    log_event("INFO", f"API Request: GET /employees/by-age-and-role | Parameters: age={age}, role={role}")
-    return querys.query_2(age, role)
+@router.get("/query_2")
+def query_2():
+    log_event("INFO", "get query_2")
+    return querys.query_2()
 
-@router.get("/employees/top-seniority")
-def top_seniority_employees_excluding_hr():
-    log_event("INFO", "API Request: GET /employees/top-seniority")
+@router.get("/query_3")
+def query_3():
+    log_event("INFO", "get query_3")
     return querys.query_3()
+
+@router.get("/query_4")
+def query_4():
+    log_event("INFO", "get query_4")
+    return querys.query_4()
+
+@router.get("/query_5")
+def query_5():
+    log_event("INFO", "get query_5")
+    return querys.query_5()
+
+@router.get("/query_6")
+def query_6():
+    log_event("INFO", "get query_6")
+    return querys.query_6()
+
+@router.get("/query_7")
+def query_7():
+    log_event("INFO", "get query_7")
+    return querys.query_7()
